@@ -53,19 +53,18 @@ class SiriLocation(AceObject):
         return super(SiriLocation, self).to_plist()
 
 class SiriWeatherItem(AceObject):
-
-    def __init__(self, userCurrentLocation=True, items=None):
+    def __init__(self, label="Apple Headquarters", location=SiriLocation(), detailType="BUSINESS_ITEM"):
         super(SiriWeatherItem, self).__init__("weatherItem", "com.apple.ace.weather")
         self.userCurrentLocation = userCurrentLocation
         self.label = label
         self.detailType = detailType
-        self.location = userCurrentLocation
+        self.location = location
     
     def to_plist(self):
         self.add_property('label')
         self.add_property('detailType')
         self.add_property('location')
-        return super(SiriWeatherItem, self).to_plist()
+        return super(SiriweatherItem, self).to_plist()
 class WeatherSnippet(AceObject):
     def __init__(self, clocks=None):
         super(WeatherSnippet, self).__init__("Snippet", "com.apple.ace.weather")
